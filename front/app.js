@@ -1,7 +1,4 @@
-// ⚠️ IMPORTANTE: cuando despliegues el backend en Render, reemplaza esta URL
-// por la real que Render te dé, agregando "/api/horarios" al final. Ejemplo:
-// const API = "https://horariosdocentesapp-backend.onrender.com/api/horarios";
-const API = 'http://127.0.0.1:8080/api/horarios';
+const API = 'https://horariosdocentesapp-backend.onrender.com/api/horarios';
 
 const carreras = {
   'Ciencias Económicas': ['Contabilidad', 'Administración', 'Finanzas'],
