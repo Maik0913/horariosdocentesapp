@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>horariosDocenteApp</title>
+</head>
+<body>
+
+  <noscript>Este aplicativo requiere JavaScript habilitado.</noscript>
+
+  <div id="app">
+
+    <!-- MENÚ -->
+    <div id="vista-menu">
+      <h2>Administración de Horarios</h2>
+      <button onclick="mostrarVista('crear')">Crear horario</button><br><br>
+      <button onclick="mostrarVista('editar')">Editar horario</button><br><br>
+      <button onclick="mostrarVista('borrar')">Borrar horario</button><br><br>
+      <button onclick="mostrarVista('lista'); cargarLista()">Listado de horarios</button><br><br>
+      <button onclick="mostrarVista('salir')">Salir del programa</button><br><br>
+      <p>Selecciona una opción del menú.</p>
+    </div>
+
+    <!-- CREAR -->
+    <div id="vista-crear" style="display:none;">
+      <h3>Crear horario</h3>
+      <label>Docente: <input type="text" id="c-docente"></label><br><br>
+      <label>Facultad:
+        <select id="c-facultad" onchange="cargarCarreras()">
+          <option value="">-- selecciona --</option>
+          <option>Ciencias Económicas</option>
+          <option>Sistemas</option>
+          <option>Ingeniería</option>
+        </select>
+      </label><br><br>
+      <label>Carrera:
+        <select id="c-carrera" onchange="cargarMaterias()">
+          <option value="">-- selecciona facultad --</option>
+        </select>
+      </label><br><br>
+      <label>Materia:
+        <select id="c-materia">
+          <option value="">-- selecciona carrera --</option>
+        </select>
+      </label><br><br>
+      <label>Fecha clase: <input type="date" id="c-fecha"></label><br><br>
+      <label>Hora inicia: <input type="time" id="c-hinicio"></label><br><br>
+      <label>Hora termina: <input type="time" id="c-hfin"></label><br><br>
+      <p id="c-msg"></p>
+      <button onclick="guardar()">Guardar</button>
+      <button onclick="cancelar('crear')">Cancelar</button>
+    </div>
+
+    <!-- EDITAR -->
+    <div id="vista-editar" style="display:none;">
+      <h3>Editar horario</h3>
+      <label>ID del horario: <input type="number" id="e-id"></label>
+      <button onclick="buscar('e')">Buscar</button><br><br>
+      <label>Docente: <input type="text" id="e-docente"></label><br><br>
+      <label>Facultad: <input type="text" id="e-facultad"></label><br><br>
+      <label>Carrera: <input type="text" id="e-carrera"></label><br><br>
+      <label>Materia: <input type="text" id="e-materia"></label><br><br>
+      <label>Fecha clase: <input type="date" id="e-fecha"></label><br><br>
+      <label>Hora inicia: <input type="time" id="e-hinicio"></label><br><br>
+      <label>Hora termina: <input type="time" id="e-hfin"></label><br><br>
+      <p id="e-msg"></p>
+      <button onclick="editar()">Editar</button>
+      <button onclick="cancelar('editar')">Cancelar</button>
+    </div>
+
+    <!-- BORRAR -->
+    <div id="vista-borrar" style="display:none;">
+      <h3>Borrar horario</h3>
+      <label>ID del horario: <input type="number" id="b-id"></label>
+      <button onclick="buscar('b')">Buscar</button><br><br>
+      <label>Docente: <input type="text" id="b-docente"></label><br><br>
+      <label>Facultad: <input type="text" id="b-facultad" disabled></label><br><br>
+      <label>Carrera: <input type="text" id="b-carrera" disabled></label><br><br>
+      <label>Materia: <input type="text" id="b-materia" disabled></label><br><br>
+      <label>Fecha clase: <input type="date" id="b-fecha" disabled></label><br><br>
+      <label>Hora inicia: <input type="time" id="b-hinicio" disabled></label><br><br>
+      <label>Hora termina: <input type="time" id="b-hfin" disabled></label><br><br>
+      <p id="b-msg"></p>
+      <button onclick="borrar()">Eliminar</button>
+      <button onclick="cancelar('borrar')">Cancelar</button>
+    </div>
+
+    <!-- LISTA -->
+    <div id="vista-lista" style="display:none;">
+      <h3>Listado de horarios</h3>
+      Ordenar por:
+      <select id="l-orden">
+        <option value="idHorario">ID</option>
+        <option value="docente">Docente</option>
+        <option value="materia">Materia</option>
+      </select>
+      Búsqueda: <input type="text" id="l-busqueda">
+      <button onclick="cargarLista()">Buscar</button><br><br>
+      <p id="l-resumen"></p>
+      <table border="1">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Docente</th>
+            <th>Facultad</th>
+            <th>Carrera</th>
+            <th>Materia</th>
+            <th>Fecha</th>
+            <th>Hora inicia</th>
+            <th>Hora termina</th>
+          </tr>
+        </thead>
+        <tbody id="l-cuerpo"></tbody>
+      </table><br>
+      <button onclick="mostrarVista('menu')">Cerrar</button>
+    </div>
+
+    <!-- SALIR -->
+    <div id="vista-salir" style="display:none;">
+      <h3>Salir del programa</h3>
+      <p>Puede cerrar esta pestaña/ventana del navegador para finalizar.</p>
+      <button onclick="mostrarVista('menu')">Volver al menú</button>
+    </div>
+
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
